@@ -59,6 +59,7 @@ export const defaultConfig = {
     smConsoleRedirect: process.env.RI_SM_REDIRECT_URL ?? '',
     dbUpgradeRedirectBase: process.env.RI_DB_UPGRADE_REDIRECT_URL ?? '',
     defaultTheme: process.env.RI_DEFAULT_THEME ?? 'SYSTEM',
+    devWindowId: process.env.RI_DEV_WINDOW_ID ?? '',
     lazyLoad: booleanEnv('RI_ROUTES_LAZY_LOAD', false),
     routesExcludedByEnv: booleanEnv('RI_ROUTES_EXCLUDED_BY_ENV', false),
     returnUrlBase: process.env.RI_RETURN_URL_BASE,

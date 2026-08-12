@@ -143,6 +143,21 @@ export default defineConfig({
     fs: {
       allow: ['..', '../../node_modules/monaco-editor', 'static', 'defaults'],
     },
+    ...(process.env.RI_BACKEND_PORT ? {
+      proxy: {
+        '/api': {
+          target: `https://localhost:${process.env.RI_BACKEND_PORT}`,
+          changeOrigin: true,
+          secure: false,
+        },
+        '/socket.io': {
+          target: `https://localhost:${process.env.RI_BACKEND_PORT}`,
+          changeOrigin: true,
+          secure: false,
+          ws: true,
+        },
+      },
+    } : {}),
   },
   envPrefix: 'RI_',
   optimizeDeps: {

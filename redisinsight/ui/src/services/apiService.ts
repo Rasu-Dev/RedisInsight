@@ -57,8 +57,9 @@ export const requestInterceptor = (config: InternalAxiosRequestConfig) => {
       }
     }
 
-    if (window.windowId) {
-      config.headers[CustomHeaders.WindowId] = window.windowId
+    const windowId = window.windowId || (isDevelopment ? riConfig.app.devWindowId : undefined)
+    if (windowId) {
+      config.headers[CustomHeaders.WindowId] = windowId
     }
   }
 
